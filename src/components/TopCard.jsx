@@ -32,10 +32,10 @@ return(<div className={dark ?"topCardWithBorder":"LtopCardWithBorder"}   >
 		{border(item)}
 	
 	<div className={dark?'topCard':'LTopCard'} >
-<span> <img src={item.logo}/> <span className={dark?'darkText user':'lightText user'}> {item.user} </span> </span> 
+<span> <img alt="logo" src={item.logo}/> <span className={dark?'darkText user':'lightText user'}> {item.user} </span> </span> 
   <h3 style={{fontSize:'3.5rem ', margin:'.8rem 0 0 0'}} >{item.num}</h3>
  <span className={dark?'darkText followers':'lightText followers'} > {item.title}</span>
-<span className="today"> <img src={item.up?'./images/icon-up.svg': './images/icon-down.svg'} /><span className={item.up?'green':'red'}> {item.today} Today</span></span>
+<span className="today"> <img alt="arrow" src={item.up?'./images/icon-up.svg': './images/icon-down.svg'} /><span className={item.up?'green':'red'}> {item.today} Today</span></span>
 </div>
 
 
