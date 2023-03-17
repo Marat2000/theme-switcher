@@ -1,125 +1,383 @@
-:root{
---contSize:18rem;
---padding:1rem;
---border:2px solid #999;
---containerBorder:2px solid #222;
---shadow:rgba(0,0,0,.5) 0 0 .7rem;
---red:#fc5203;
---blue:#78c8e3;
---redLine: linear-gradient(red, white);
---blueLine: linear-gradient(blue, white);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+:root
+{
 
+--LimeGreen: hsl(163, 72%, 41%);
+--BrightRed: hsl(356, 69%, 56%);
+
+--Fb: hsl(208, 92%, 53%);
+--Tw: hsl(203, 89%, 53%);
+--Inst: linear-gradient(90deg, hsl(37, 97%, 70%) , hsl(329, 70%, 58%));
+--Ytb: hsl(348, 97%, 39%);
+--Toggle1: linear-gradient(90deg , hsl(210, 78%, 56%) ,hsl(146, 68%, 55%));
+--Toggle2: hsl(230, 22%, 74%);
+--BG: hsl(230, 17%, 14%);
+--TopBG: hsl(232, 19%, 15%);
+--CardBG: hsl(228, 28%, 20%);
+--BlueText: hsl(228, 34%, 66%);
+--White: hsl(0, 0%, 100%);
+
+--LTopBG: hsl(225, 100%, 98%);
+--LCardBG: hsl(227, 47%, 96%);
+--LGrayishText: hsl(228, 12%, 44%);
+--LBlueText: hsl(230, 17%, 14%);
 }
 
 
-.container
+.green
 {
-	width:var(--contSize);
-	height: var(--contSize);
-	border:var(--containerBorder);
-	padding: var(--padding);
-	border-radius: 2rem;
-	display: grid;
-	place-items:center;
-	background-color: #999;
-	box-shadow: var(--shadow);
-
-}
-
-.score
-{
-	display:flex;
-	 justify-content:space-between;
-	 align-items: center;
-	 width:18rem;
-	 box-shadow: var(--shadow);
-	 background-color: #ededed;
-	  padding:1rem ;
-	 height:1.5rem;
-	 border-radius:1rem;
-	 border:1px #999 solid;
-	 margin:0 0 1rem 0;
-
-}
-
-.controlBtn
-{
-	border-radius: 1rem;
-	width: 4rem;
-	height: 2.5rem;
-	box-shadow: var(--shadow);
-	text-align: center;
+	color:green;
 	font-weight: bold;
-	border:var(--border);
-	cursor: pointer;
+	margin-left:.5rem;
 }
-
-.line
+.red
 {
-	width:16rem ;
-	height:5px;
-	background-image: var(--redLine);
-	position:absolute;
+	color:red;
+	font-weight: bold;
+	margin-left:.5rem;
 }
 
-.col
+.attribution
+{
+	color:black;
+}
+
+ html 
+ {
+ 	font-family: 'Inter', sans-serif;
+ 	color: var(--White);
+
+ }
+
+ body
+ {
+ 	margin:0;
+ 	padding: 0;
+ }
+
+
+
+ main
+ {
+ 	background-color: var(--BG) ;
+ 	 margin:0;
+ 	 padding:0;
+ 	 width:100%;
+ 	 min-height:100vh;
+ 	 	display: grid;
+ 	place-items:center;
+ }
+
+ .lmain
+ {
+ 	background-color: var(--White) ;
+
+ }
+
+ .container
+ {
+ 	padding: 1rem;
+ }
+
+ .toggle
+ {
+ 	background-image:var(--Toggle1);
+ 	background-color: hsl(146, 68%, 55%);
+ 	width:4.1rem;
+ 	height: 2rem;
+ 	align-items: center;
+ 	display: grid;
+ 	position: relative;
+ 	border-radius: 2.2rem;
+ 	transition: .3s;
+ 	cursor: pointer;
+ 	margin-left:1rem;
+
+ }
+
+.toggleClicked
+{
+	background-image: none;
+	background-color: var(--Toggle2);
+}
+
+ .circle
+ {
+ 	margin-left:.2rem;
+ 	position: absolute;
+ 	background-color: var(--BG);
+ 	width: 1.5rem;
+ 	border-radius: 50%;
+ 	height: 1.5rem;
+ 	transition: .3s;
+ }
+
+ .circleClicked
+ {
+ 	background-color: var(--White);
+ 	margin-left: 2.4rem;
+ }
+
+ .darkText
+ {
+ 	color: var(--BlueText);
+ 	transition: .3s;
+
+ }
+
+.lightText
+ {
+ 	color: var(--LGrayishText);
+ 	transition: .3s;
+
+ }
+
+
+
+ .mode
+ {
+ 	padding-top: 1rem;
+ 	display: flex;
+ 	align-items: center;
+ 	font-weight: bold;
+ 	justify-content: space-between;
+ 	border-top:2px var(--CardBG) solid;
+ }
+
+ .Lmode
+ {
+ 	border-top:2px var(--LGrayishText) solid;
+
+ }
+
+ .topCard
+ {
+ 	background-color: var(--CardBG);
+ 	text-align: center;
+ 	padding-top: 2.2rem;
+ 	border-radius:0 0 .4rem .4rem;
+ 	margin-top:0;
+ 	border-top:transparent .4rem solid;
+ 	transform: translateY(.5rem);
+ 	z-index: 100;
+ 	transition: .3s;
+ }
+
+ .LTopCard
+ {
+ 		background-color: var(--LCardBG);
+ 		color:var(--LBlueText);
+ 		text-align: center;
+	 	padding-top: 2.2rem;
+	 	border-radius:0 0 .4rem .4rem;
+	 	margin-top:0;
+	 	border-top:transparent .4rem solid;
+	 	transform: translateY(.5rem);
+	 	z-index: 100;
+	 	transition: .3s;
+ }
+
+ .back
+ {
+ 	display: block;
+ 	position: relative;
+ 	border-radius: .4rem;
+ 	margin-top: 3rem;
+ 	margin-bottom:-.5rem;
+ 	z-index: 90;
+ 	border-radius:.4rem .4rem 0 0 ;
+ 	 	height: .4rem;
+
+ }
+
+ .topCard *, .LTopCard *
+ {
+ 	align-items: center;
+ 	display: flex;
+ 	justify-content: center;
+ }
+
+
+
+ .user
+ {
+ 	font-size: .9rem;
+ 	font-weight: bold;
+ 	margin-left: .5rem;
+ }
+ .backColor
+ {
+ 	background-color:var(--TopBG) ;
+ 	border-radius: 0 0 1rem 1rem;
+ 	 width:100%;
+ 	 height:35vh;
+ 	 top:0;
+ 	 position:absolute;
+ }
+
+.lBackColor
+{
+ 	background-color:var(--LTopBG) ;
+
+}
+
+
+ .followers
+ {
+ 	letter-spacing: .2rem;
+ 	text-transform: uppercase;
+ }
+
+header *
+{
+z-index:10;
+position: relative;
+}
+
+
+.red
+{
+	color:red;
+}
+
+
+ .today
+ {
+ 	padding: 2rem;
+ }
+
+ .card
+ {
+ 	background-color: var(--CardBG);
+ 	padding: 2.5rem 2rem;
+ 	display: flex;
+ 	border-radius: .3rem;
+ 	margin-bottom:1rem;
+ 	transition: .3s;
+ }
+
+ .Lcard
+ {
+ 	background-color: var(--LCardBG);
+ 	color:var(--LBlueText);
+ 	padding: 2.5rem 2rem;
+ 	display: flex;
+ 	border-radius: .3rem;
+ 	margin-bottom:1rem;
+ 	transition: .3s;
+ }
+
+.fb
+{
+	background-color: var(--Fb);
+}
+
+.tw
+{
+	background-color: var(--Tw);
+}
+
+.inst
+{
+	background-image:  var(--Inst);
+}
+
+.ytb
+{
+	background-color: var(--Ytb);
+}
+
+.topCardWithBorder,.LtopCardWithBorder
+{
+	transition: .3s;
+}
+
+ .Lcard:hover , .LtopCardWithBorder:hover  
+ {
+ 	filter:brightness(95%);
+ 	transform:translateY(-.2rem);
+ 	cursor: pointer;
+ }
+
+ .card:hover, .topCardWithBorder:hover  
+ {
+ 	filter:brightness(125%);
+ 	transform:translateY(-.2rem);
+ 	cursor: pointer;
+ }
+
+ 
+/****************************************************/
+
+
+@media(min-width: 1000px)
+{
+
+.allTopCards
 {
 	display: flex;
-	margin:0;
-	border-radius: 1rem;
-	padding: 0;
+	justify-content: space-between;
+	margin-left: 0;
+	height: inherit;
 }
 
-.row
+.topCardWithBorder , .LtopCardWithBorder
 {
-	width: calc(var(--contSize)/3 - 0.5rem);
-	height: calc(var(--contSize)/3 - 0.5rem);
-	border:var(--border);
-	display: grid;
-	margin:0;
-	outline: #555 3px double;
-	background-image: linear-gradient(  #ededed , white);
-	background-color: white;
-	place-items:center;
+	width: 23%;
 }
 
-#root
+.allCards
 {
-	height: 100vh;
-	display: grid;
-	place-items:center;
-}
-
-.leftTop
-{
-	border-radius: 1rem 0 0 0 ;
-}
-
-.leftBott
-{
-	border-radius:  0 0 0 1rem;
-}
-
-.rightTop
-{
-	border-radius: 0 1rem 0 0 ;
-}
-
-.rightBott
-{
-	border-radius: 0 0 1rem 0 ;
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between;
 }
 
 
-.x
+
+.card , .Lcard
 {
-	color:var(--red);
-	font-size: 5rem;
+	width: 17%;
+}
+.container
+{
+	padding-left: 10%;
+	padding-right: 10%; 
 }
 
-.o
+.topCard h3 , .LTopCard h3
 {
-	color:var(--blue);
-	font-size: 3.5rem;
+	font-size: 3rem !important;
+}
+
+.topCard , .LTopCard
+{
+	padding: .9rem;
+	height: 10.5rem;
+	
+}
+
+
+	
+
+.today
+{
+	padding: 1rem;
+}
+
+
+header
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+.mode
+{
+	border-top:none;
+}
+
 }

@@ -1,376 +1,145 @@
 import  {BiX, BiCircle} from 'react-icons/bi'
 import {GrPowerReset} from 'react-icons/gr'
-import {useState , useEffect} from 'react'
+import {useState , useEffect, createContext} from 'react'
+import TopCard from './components/TopCard'
+import Card from './components/Card'
+import Footer from './components/Footer'
+import Header from './components/Header'
+
+export const AppContext=createContext({})
 
 function App() {
 
-
-
-	const [state,setState]=useState(
-	[[0,0,0],
-	[0,0,0],
-	[0,0,0]])
-	const [k,setK]=useState(0)
- 	const [win,setWin]=useState(false)
- 	const [lose,setLose]=useState(false)
- 	const [score,setScore]=useState([0,0])
-
-const refresh=()=>
-{
-	setState(
-	[[0,0,0],
-	[0,0,0],
-	[0,0,0]])
-	setK(0)
-	setWin(false)
-	setLose(false)
-}
-
-const click=async(x,y)=>
-{	
-if(win==false && lose==false)
-	{let i=1;
-	
-		if(state[x][y]==0)
-		{
-			setK(k+1)
-			state[x][y]=1;
-await	setState([...state]);
-			if(k<4 && win==false )
-		await	makeO(x,y);
-			}}
-
-}
+const [dark,setDark]=useState(true);
 
 
 
-
-const render=(x,y)=>
-{
-	if(state[x][y]==1)
-		return  <BiX className='x'/>
-	if(state[x][y]==2)
-		return  <BiCircle className='o'/>
-}
-
-const newGame=()=>
-{
-	refresh();
-	setScore([0,0]);
-
-
-}
-
-const makeO=(x,y)=>
-{
-
-if(win==false)
+const [topCard,setTopCard]=useState([
 	{
-	setState([...state])
-	
+		user:'@nathanf',
+		logo:'./images/icons/fb.svg',
+		num:1987,
+		title:'Followers',
+		today:12,
+		border:'0',
+		up:false
+	},
 
-let m=Math.floor(Math.random()*101)
+	{
+		user:'@nathanf',
+		logo:'./images/icons/tw.svg',
+		num:1044,
+		title:'Followers',
+		today:99,
+		border:'0',
+		up:true
+	},
 
-if(m<=55)
+	{
+		user:'@realnathanf',
+		logo:'./images/icons/inst.svg',
+		num:`${11}k`,
+		title:'Followers',
+		today:1099,
+		border:'0',
+		up:true
+	},
+
+	{
+		user:'Nathan F.',
+		logo:'./images/icons/ytb.svg',
+		num:8239,
+		title:'Subscribers',
+		today:144,
+		border:'0',
+		up:false
+	}
+])
+
+const [card,setCard]=useState([
+
 {
-	if(x==2 && y==0 && state[1][1]==0)
-		state[1][1]=2
-	else if(x==2 && y==0 && state[0][2]==0)
-		state[0][2]=2
-	
-	
-	
-	else if(x==0 && y==2 && state[1][1]==0)
-		state[1][1]=2
-	else if(x==0 && y==2 &&  state[2][0]==0)
-		state[2][0]=2
-	
-	
-	else if(x==0 && y==0 && state[1][1]==0)
-		state[1][1]=2
-	else if(x==0 && y==0 && state[2][2]==0)
-		state[2][2]=2
-	
-	
-	else if(x==2 && y==2 && state[1][1]==0)
-		state[1][1]=2
-	else if(x==2 && y==2 && state[0][0]==0)
-		state[0][0]=2
-	
-	else randomRow(x,y);
-}	
-
-if(m>55)
+	title:'Page Views',
+	num:87,
+	logo:'./images/icons/fb.svg',
+	per:3,
+	up:true
+},
 {
-	
-	 if(x==2 && y==0 && state[0][2]==0)
-		state[0][2]=2
-	else if(x==2 && y==0 && state[1][1]==0)
-		state[1][1]=2
-	
-	else if(x==2 && y==2 && state[0][0]==0)
-		state[0][0]=2
-		else if(x==2 && y==2 && state[1][1]==0)
-		state[1][1]=2
-	else if(x==0 && y==0 && state[2][2]==0)
-		state[2][2]=2
-	
-	else if(x==0 && y==0 && state[1][1]==0)
-		state[1][1]=2
-	
-	else if(x==0 && y==2 &&  state[2][0]==0)
-		state[2][0]=2
-	
-
-	else if(x==0 && y==2 && state[1][1]==0)
-		state[1][1]=2
-	
-	
-	else randomRow(x,y);
-}	
-
-
-
-
-}
-}
-
-
-const randomRow=(x,y)=>
+	title:'Likes',
+	num:52,
+	logo:'./images/icons/fb.svg',
+	per:2,
+	up:false
+},
 {
-		let h=0;
-		while(h<1)
-			{
-				let a=Math.floor(Math.random()*3)
-				let n=Math.floor(Math.random()*101)
-				console.log('a=',a)
-			if(n<=55)
-			{if( state[x][a]==0 )
-					{	state[x][a]=2; h++;}
- 			else if(state[a][y]==0)
-						{state[a][y]=2;h++;}}
-
-						
-							if(n>55)
-			{
- 			if(state[a][y]==0)
-						{state[a][y]=2;h++;}
-			else if( state[x][a]==0 )
-						{state[x][a]=2; h++;}}
-			
-			}
-
-}
-
-
-const youWin=()=>
+	title:'Likes',
+	num: 5462,
+	logo:'./images/icons/inst.svg',
+	per:2257,
+	up:true
+},
 {
-if(state[1][1]==1)
+	title:'Profile Views',
+	num:52,
+	logo:'./images/icons/inst.svg',
+	per:1375,
+	up:true
+},
 {
-	if(state[0][0]==1 && state[2][2]==1)
-		setWin(true);
-	else if(state[0][2]==1 && state[2][0]==1)
-		setWin(true);
-}
-
-
-
-for(let i=0;i<=2;i++)
-{let z=0;
-	for(let j=0;j<=2;j++)
-	{if(state[i][j]==1)
-		z++ ;}
-		if(z==3)
-		setWin(true)
-		else z=0;}	
-		
-		
-for(let i=0;i<=2;i++)
-{let z=0;
-	for(let j=0;j<=2;j++)
-	{if(state[j][i]==1)
-		z++ ;}
-		if(z==3)
-		setWin(true);
-		else z=0;}	
-		
-		// console.log(win);
-
-	
-}
-
-const youLose=()=>
+	title:' Retweets',
+	num:117,
+	logo:'./images/icons/tw.svg',
+	per: 303,
+	up:false
+},
 {
-if(state[1][1]==2)
+	title:'Likes',
+	num:507,
+	logo:'./images/icons/tw.svg',
+	per:553,
+	up:true
+},
 {
-	if(state[0][0]==2 && state[2][2]==2)
-		setLose(true)
-	else if(state[0][2]==2 && state[2][0]==2)
-		setLose(true)
-}
-
-
-
-for(let i=0;i<=2;i++)
-{let z=0;
-	for(let j=0;j<=2;j++)
-	{if(state[i][j]==2)
-		z++ ;}
-		if(z==3)
-		setLose(true);
-		else z=0;}	
-		
-		
-for(let i=0;i<=2;i++)
-{let z=0;
-	for(let j=0;j<=2;j++)
-	{if(state[j][i]==2)
-		z++ ;}
-		if(z==3)
-		setLose(true);
-		else z=0;}	
-		
-		// console.log(lose);
-
-	
-}
-
-
-
-useEffect(()=>{ youWin();youLose();
-	if(win==true)
-		{ 
-			score[0]=score[0]+1
-			setScore([...score]);winLine();}
-	if(lose==true)
-		{ score[1]=score[1]+1
-			setScore([...score]);loseLine();}
-	console.log(score[0]+"/"+score[1])
-	},[lose,win,state])
-
-const winLine=()=>
+	title:'Likes',
+	num:107,
+	logo:'./images/icons/ytb.svg',
+	per:19,
+	up:false
+},
 {
-		
-
-			if(state[0][0]==1 && state[1][1]==1 && state[2][2]==1)
-				return (<div style={{left:'-8rem' , rotate:'45deg'}} className='line' ></div>)
-
-			if(state[0][0]==1 && state[0][1]==1 && state[0][2]==1)
-				return(<div style={{top:'-6rem' ,left:'-8rem '}} className='line' ></div>)
-
-			if(state[0][0]==1 && state[1][0]==1 && state [2][0]==1)
-				return(<div style={{left:'-13.7rem' , rotate:'90deg'}} className='line' ></div>)
-
-
-			if(state[1][0]==1 && state[1][1]==1 && state[1][2]==1)
-				return(<div style={{left:'-8rem'}} className='line' ></div>)
-				
-			
-			if(state[2][0]==1 && state[2][1]==1 && state[2][2]==1)
-				return(<div style={{top:'6rem' ,left:'-8rem '}} className='line' ></div>)
-				
-
-			if(state[0][1]==1 && state[1][1]==1 && state[2][1]==1)
-				return(<div style={{left:'-8rem', rotate:'90deg'}} className='line' ></div> )
-
-			if(state[0][2]==1 && state[1][2]==1 && state[2][2]==1)
-				return(<div style={{left:'-2.3rem', rotate:'90deg'}} className='line' ></div> )
-			
-			if(state[0][2]==1 && state[1][1]==1 && state[2][0]==1)
-				return(<div style={{left:'-8rem' ,rotate:'135deg'}} className='line' ></div>)
-
-}
-
-
-const loseLine=()=>
-{
-		
-
-			if(state[0][0]==2 && state[1][1]==2 && state[2][2]==2)
-				return (<div style={{left:'-8rem' , rotate:'45deg' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-
-			if(state[0][0]==2 && state[0][1]==2 && state[0][2]==2)
-				return(<div style={{top:'-6rem' ,left:'-8rem ' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-
-			if(state[0][0]==2 && state[1][0]==2 && state [2][0]==2)
-				return(<div style={{left:'-13.7rem' , rotate:'90deg' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-
-
-			if(state[1][0]==2 && state[1][1]==2 && state[1][2]==2)
-				return(<div style={{left:'-8rem' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-				
-			
-			if(state[2][0]==2 && state[2][1]==2 && state[2][2]==2)
-				return(<div style={{top:'6rem' ,left:'-8rem ' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-				
-
-			if(state[0][1]==2 && state[1][1]==2 && state[2][1]==2)
-				return(<div style={{left:'-8rem', rotate:'90deg' , backgroundImage:'var(--blueLine)'}} className='line' ></div> )
-
-			if(state[0][2]==2 && state[1][2]==2 && state[2][2]==2)
-				return(<div style={{left:'-2.3rem', rotate:'90deg' , backgroundImage:'var(--blueLine)'}} className='line' ></div> )
-			
-			if(state[0][2]==2 && state[1][1]==2 && state[2][0]==2)
-				return(<div style={{left:'-8rem' ,rotate:'135deg' , backgroundImage:'var(--blueLine)'}} className='line' ></div>)
-
-}
+	title:'Total Views',
+	num:1407,
+	logo:'./images/icons/ytb.svg',
+	per:12,
+	up:true
+},
 
 
 
 
-
-  return (<div style={{borderRadius:'2rem 2rem 3rem 3rem', padding:'1rem', border:'var(--border)', boxShadow:'var(--shadow)'}} >
-
-  	
-  	
-  	<div  className='score'  >
-  		<div className='controlBtn' onClick={newGame}>New Game</div>
-  		<div style={{fontWeight:'bold', fontSize:'2rem'}} > 
-
-  			<span style={{color:'var(--red)'}} >{score[0]}</span> / <span style={{color:'var(--blue)'}}>{score[1]}</span> 
-  		</div>
-  		<GrPowerReset onClick={refresh} style={{ fontSize:'2rem'}} className='controlBtn' />
-  	</div>
+	])
 
 
-  	<div className='container' style={{position:'relative'}} >
-  		
-  		<div className='col'>
-  	
-  	<div className='row leftTop' onClick={()=> click(0,0)} >{ render(0,0) }</div>
-  	
-  	<div className='row'  onClick={()=> click(0,1)}>{render(0,1)}</div>
-  	
-  	<div className='row rightTop'  onClick={()=> click(0,2)} >{render(0,2)}</div>
-  		</div>	
+return(
 
-  		<div className='col'>
-  	<div className='row'  onClick={()=> click(1,0)}>{render(1,0)}</div>
-  	
-  	<div className='row'  onClick={()=> click(1,1)}>{render(1,1)}</div>
-  	
-  	<div className='row'  onClick={()=> click(1,2)}>{render(1,2)}</div>
-  		</div>	
-  	
-  		<div className='col'>
-  	<div className='row leftBott'  onClick={()=> click(2,0)}>{render(2,0)}</div>
-  	
-  	<div className='row'  onClick={()=> click(2,1)}>{render(2,1)}</div>
-  	
-  	<div className='row rightBott'  onClick={()=> click(2,2)}>{render(2,2)}</div>
-  		</div>
+<main  className={dark? '' : 'lmain'}  >
+<AppContext.Provider value={{topCard ,setTopCard, card , dark,setDark}}>
+<div className={dark? 'backColor': 'backColor  lBackColor'} ></div>
 
-  		<div style={{position:'absolute'}} > {winLine()} </div>
-  		<div style={{position:'absolute'}} > {loseLine()} </div>
-  		  		 		
-  		
-  		
-  	
-  	
-  	</div>
-  	
+<div className="container">
+	<Header/>
+		<TopCard/>
+ <h2 style={{marginTop:'4rem'}} className={dark?'':'lightText'}>Overview - Today</h2>
+	<Card/>
 
- </div> );}
+</div>
+
+<Footer/>
+
+</AppContext.Provider>
+</main>
+)}
 
 
 export default App;
